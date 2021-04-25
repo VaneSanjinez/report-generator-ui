@@ -1,22 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import './services/GitlabServices'
+import getGitlabUrl, { getReportHello, sum } from './services/GitlabServices';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {getGitlabUrl()}
+        {console.log(sum(100,5))}
+        {console.log(getReportHello())}
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <p>Report generator!</p>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
