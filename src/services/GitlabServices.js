@@ -24,16 +24,8 @@ export function getAllProjects(){
     return fetch(url)
            .then(res => res.json())
            .then(response => {
-            //    var {data} = response
                console.log(response.length);
-            //    if(response.length > 0){
-            //        console.log("length is higher than 0")
-                   const data = response
-            //    }
-               
-            //    const {data=[]} = response
-               console.log({data})
-            //    console.log({data})
+               const data = response
                 if(Array.isArray(data)){
                     const projects = data.map(project => {
                         const{id, description, name, webUrl} = project

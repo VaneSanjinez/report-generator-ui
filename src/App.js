@@ -34,19 +34,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* {getGitlabUrl()} */}
-        {/* {console.log(sum(100,5))} */}
-        {/* {console.log(getReportHello())} */}
+        {getGitlabUrl()}
         <div>
           <p>Report generator!</p>
-          {/* {projects.map((singleProject) => (<div>{singleProject.id}</div>))} */}
-          <ListOfProjects className="listProjects">
-            projects!
-          </ListOfProjects>
-{/* 
-          {
-            projects.map(singleProject => <div>{singleProject}</div>)
-          } */}
+          <ListOfProjects className="listProjects"/>
         </div>
       </header>
     </div>

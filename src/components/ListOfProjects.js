@@ -9,13 +9,12 @@ export default function ListOfProjects(){
         getAllProjects()
         .then(projects => setProjects(projects))
     }, []);
-    console.log(projects)
     return <div>
         {projects.map(({id, name, description}) =>
             <Project 
                 key = {id}
                 name = {name}
-                // description = {description}
+                description = {description}
             />
         )}
     </div>
