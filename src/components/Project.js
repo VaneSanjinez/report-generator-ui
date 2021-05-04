@@ -9,11 +9,17 @@ export default function Project({id, description, name, webUrl}){
 }
 
 export function ProjectById({id, description, name, webUrl}){
-    const {projectId} = id
-    console.log('before calling service')
-    getProjectById(id)
-    return (<div>
-        <h4>{name}</h4>
-        <h5>{description}</h5>
-    </div>)
+    const [project, setProject] = useState([]);
+
+    useEffect(function(){
+        getProjectById(id)
+        .then(project => setProject(project))
+    }, []);
+    return <div>
+            <Project 
+                key = {project.id}
+                name = {project.name}
+                description = {project.description}
+            />
+    </div>
 }
