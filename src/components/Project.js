@@ -5,6 +5,7 @@ export default function Project({id, description, name, webUrl}){
     return ( <div>
         <h4>{name}</h4>
         <h5>{description}</h5>
+        <h5>{webUrl}</h5>
     </div>)
 }
 
@@ -20,6 +21,7 @@ export function ProjectById({id, description, name, webUrl}){
                 key = {project.id}
                 name = {project.name}
                 description = {project.description}
+                webUrl = {project.webUrl}
             />
     </div>
 }
