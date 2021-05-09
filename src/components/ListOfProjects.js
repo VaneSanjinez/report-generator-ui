@@ -1,6 +1,6 @@
 import React,  {useEffect, useState} from 'react'
 import Project from './Project'
-import GitlabServices, { getAllProjects } from '../services/GitlabServices'
+import GitlabServices, { getAllProjects, getProjectsByUserId } from '../services/GitlabServices'
 
 export default function ListOfProjects(){
     const [projects, setProjects] = useState([]);
@@ -18,4 +18,24 @@ export default function ListOfProjects(){
             />
         )}
     </div>
+}
+
+export function ListOfProjectsByUserId({userId}){
+    const [projects, setProjects] = useState([]); 
+
+    useEffect(function(){
+        getProjectsByUserId(userId)
+        .then(project => setProjects(project))
+    }, []);
+
+    return <div>
+        {projects.map(({id, name, description}) =>
+            <Project 
+                key = {id}
+                name = {name}
+                description = {description}
+            />
+        )}
+    </div>
+
 }
