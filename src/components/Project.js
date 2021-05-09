@@ -9,7 +9,8 @@ export default function Project({id, description, name, webUrl}){
     </div>)
 }
 
-export function ProjectById({id, description, name, webUrl}){
+// export function ProjectById({id, description, name, webUrl}){
+export function ProjectById({id}){
     const [project, setProject] = useState([]);
 
     useEffect(function(){
