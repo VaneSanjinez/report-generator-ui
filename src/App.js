@@ -3,8 +3,9 @@ import './App.css';
 import ListOfProjects, { ListOfProjectsByUserId } from './components/ListOfProjects';
 import Project, { ProjectById } from './components/Project';
 import './services/GitlabServices'
-import getGitlabUrl, { getProjectById, getProjectsByUserId, getReportHello, sum } from './services/GitlabServices';
+import getGitlabUrl, { getProjectById, getProjectMembers, getProjectsByUserId, getReportHello, sum } from './services/GitlabServices';
 import {Route, Link} from 'wouter';
+import ListOfMembers from './components/ListOfMembers';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         </div>
         <div>
           {/* <ProjectById id={18625237}/> */}
+          <ListOfMembers projectId={250833}/>
         </div>
       </header>
     </div>

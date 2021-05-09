@@ -70,3 +70,22 @@ export function getProjectsByUserId(userId){
            })
     
 }
+
+//http://localhost:9091/gitlab/projects/250833/members
+export function getProjectMembers(projectId){
+    const url = baseUrl + 'projects/' + projectId + '/members';
+    console.log(url)
+    return fetch(url)
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+                const data = response;
+                if(Array.isArray(data)){
+                    const members = data.map(member => {
+                        const{id, name, username, webUrl} = member
+                        return {id, name, username, webUrl}
+                    })
+                 return members
+                }
+            })
+}
