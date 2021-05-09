@@ -1,43 +1,21 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import ListOfProjects from './components/ListOfProjects';
+import Project, { ProjectById } from './components/Project';
 import './services/GitlabServices'
-import getGitlabUrl, { getReportHello, sum } from './services/GitlabServices';
+import getGitlabUrl, { getProjectById, getReportHello, sum } from './services/GitlabServices';
 
 function App() {
-  // const [projects, setProjects] = useState([])
-  // useEffect(function(){
-  //   console.log('effect ran')
-  //   fetch('http://localhost:9091/gitlab/projects/')
-  //     .then(res =>res.json())
-  //     .then(response =>{
-  //       const {data} = response
-  //       console.log("^^^^^^^^^^^^^^" + {data} + "^^^^^^^^^^^^")
-  //       const projects = data.map(project => project.id)
-  //       console.log(projects)
-  //     })
-  //   }, [])
-
-  // useEffect(() => {
-  //   fetch('http://localhost:9091/gitlab/projects/')
-  //   .then((res) => res.json())
-  //   .then((projects) => {
-  //     setProjects(projects);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err)
-  //   }, [])
-  // })
-
-
-
   return (
     <div className="App">
       <header className="App-header">
         {getGitlabUrl()}
         <div>
           <p>Report generator!</p>
-          <ListOfProjects className="listProjects"/>
+          {/* <ListOfProjects className="listProjects"/> */}
+        </div>
+        <div>
+          <ProjectById id={18625237}/>
         </div>
       </header>
     </div>
