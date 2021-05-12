@@ -1,6 +1,6 @@
 import React,  {useEffect, useState} from 'react'
 import Project from './Project'
-import GitlabServices, { getAllProjects, getProjectsByUserId } from '../services/GitlabServices'
+import { getAllProjects, getProjectsByUserId } from '../services/GitlabServices'
 
 export default function ListOfProjects(){
     const [projects, setProjects] = useState([]);
