@@ -107,3 +107,17 @@ export function getCommitsByProjectId(projectId){
                 }
             })
 }
+
+//http://localhost:9091/gitlab/projects/18625237/commits/f482fef4bbb5d8ac99d20b6d80b3f1af50c8b335
+export function getCommitById(projectId, commitId){
+    const url = baseUrl + 'projects/' + projectId + '/commits/' + commitId;
+    console.log(url);
+    return fetch(url)
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+            const data = response;
+            const{id, authorName, authorEmail, creationDate, message, webUrl} = data
+            return {id, authorName, authorEmail, creationDate, message, webUrl}
+        })
+}
