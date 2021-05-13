@@ -4,6 +4,8 @@ import Project, { ProjectById } from './components/Project';
 import './services/GitlabServices'
 import {Route, Link} from 'wouter';
 import ListOfMembers from './components/ListOfMembers';
+import { getCommitsByProjectId } from './services/GitlabServices';
+import ListOfCommits from './components/ListOfCommits';
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         <div>
           {/* <ProjectById id={18625237}/>
           <ListOfMembers projectId={250833}/> */}
+          <ListOfCommits projectId = {18625237} />
         </div>
       </header>
     </div>

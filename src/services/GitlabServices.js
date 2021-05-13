@@ -89,3 +89,21 @@ export function getProjectMembers(projectId){
                 }
             })
 }
+//commits calls
+// http://localhost:9091/gitlab/projects/18625237/commits
+export function getCommitsByProjectId(projectId){
+    const url = baseUrl + 'projects/' + projectId + '/commits';
+    console.log(url);
+    return fetch(url)
+            .then(res => res.json())
+            .then(response => {
+                const data = response;
+                if(Array.isArray(data)){
+                    const commits = data.map(commit => {
+                        const{id, authorName, authorEmail, creationDate, message, webUrl} = commit
+                        return {id, authorName, authorEmail, creationDate, message, webUrl}
+                    })
+                 return commits
+                }
+            })
+}
