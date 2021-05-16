@@ -6,6 +6,7 @@ import {Route, Link} from 'wouter';
 import ListOfMembers from './components/ListOfMembers';
 import { getCommitsByProjectId } from './services/GitlabServices';
 import ListOfCommits from './components/ListOfCommits';
+import { CommitById } from './components/Commit';
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
         <div>
           {/* <ProjectById id={18625237}/>
           <ListOfMembers projectId={250833}/> */}
-          <ListOfCommits projectId = {18625237} />
+          {/* <ListOfCommits projectId = {18625237} /> */}
+          <CommitById projectId={18625237} commitId = {'f482fef4bbb5d8ac99d20b6d80b3f1af50c8b335'}/>
         </div>
       </header>
     </div>
