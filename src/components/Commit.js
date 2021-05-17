@@ -27,18 +27,3 @@ export function CommitById({projectId, commitId}){
         />
     </div>
 }
-
-// const [project, setProject] = useState([]);
-
-// useEffect(function(){
-//     getProjectById(id)
-//     .then(project => setProject(project))
-// }, []);
-// return <div>
-//         <Project 
-//             key = {project.id}
-//             name = {project.name}
-//             description = {project.description}
-//             webUrl = {project.webUrl}
-//         />
-// </div>

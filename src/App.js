@@ -4,8 +4,8 @@ import Project, { ProjectById } from './components/Project';
 import './services/GitlabServices'
 import {Route, Link} from 'wouter';
 import ListOfMembers from './components/ListOfMembers';
-import { getCommitsByProjectId } from './services/GitlabServices';
-import ListOfCommits from './components/ListOfCommits';
+import { getCommitsByProjectId, getCommitsSinceDate } from './services/GitlabServices';
+import ListOfCommits, { ListOfCommitsSinceDate, ListOfCommitsSinceUntilDates, ListOfCommitsUntilDate } from './components/ListOfCommits';
 import { CommitById } from './components/Commit';
 
 function App() {
@@ -30,7 +30,10 @@ function App() {
           {/* <ProjectById id={18625237}/>
           <ListOfMembers projectId={250833}/> */}
           {/* <ListOfCommits projectId = {18625237} /> */}
-          <CommitById projectId={18625237} commitId = {'f482fef4bbb5d8ac99d20b6d80b3f1af50c8b335'}/>
+          {/* <CommitById projectId={18625237} commitId = {'f482fef4bbb5d8ac99d20b6d80b3f1af50c8b335'}/> */}
+          {/* <ListOfCommitsSinceDate projectId ={18625237} sinceDate = {'2020-07-07'}/> */}
+          {/* <ListOfCommitsUntilDate projectId={18625237} untilDate={'2020-09-20'} /> */}
+          <ListOfCommitsSinceUntilDates projectId = {18625237} sinceDate={'2019-02-21'} untilDate = {'2019-02-22'}/>
         </div>
       </header>
     </div>

@@ -121,3 +121,57 @@ export function getCommitById(projectId, commitId){
             return {id, authorName, authorEmail, creationDate, message, webUrl}
         })
 }
+//http://localhost:9091/gitlab/projects/18625237/commits/dates?until=2020-09-20&since=2020-07-07
+export function getCommitsSinceDate(projectId, since){
+    const url = baseUrl + 'projects/' + projectId + '/commits/dates?since=' + since;
+    console.log(url);
+    return fetch(url)
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+            const data = response;
+                if(Array.isArray(data)){
+                    const commits = data.map(commit => {
+                        const{id, authorName, authorEmail, creationDate, message, webUrl} = commit
+                        return {id, authorName, authorEmail, creationDate, message, webUrl}
+                    })
+                 return commits
+                }
+        })
+}
+// http://localhost:9091/gitlab/projects/18625237/commits/dates?until=2020-09-20
+export function getCommitsUntilDate(projectId, until){
+    const url = baseUrl + 'projects/' + projectId + '/commits/dates?until=' + until;
+    console.log(url);
+    return fetch(url)
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+            const data = response;
+                if(Array.isArray(data)){
+                    const commits = data.map(commit => {
+                        const{id, authorName, authorEmail, creationDate, message, webUrl} = commit
+                        return {id, authorName, authorEmail, creationDate, message, webUrl}
+                    })
+                 return commits
+                }
+        })
+}
+// http://localhost:9091/gitlab/projects/18625237/commits/dates?since=2019-02-21&until=2019-02-22
+export function getCommitsSinceUntilDate(projectId, since, until){
+    const url = baseUrl + 'projects/' + projectId + '/commits/dates?since=' + since + '&until=' + until;
+    console.log(url);
+    return fetch(url)
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+            const data = response;
+                if(Array.isArray(data)){
+                    const commits = data.map(commit => {
+                        const{id, authorName, authorEmail, creationDate, message, webUrl} = commit
+                        return {id, authorName, authorEmail, creationDate, message, webUrl}
+                    })
+                 return commits
+                }
+        })
+}
