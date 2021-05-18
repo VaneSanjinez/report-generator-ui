@@ -4,9 +4,10 @@ import Project, { ProjectById } from './components/Project';
 import './services/GitlabServices'
 import {Route, Link} from 'wouter';
 import ListOfMembers from './components/ListOfMembers';
-import { getCommitsByProjectId, getCommitsSinceDate } from './services/GitlabServices';
+import { getCommitsByProjectId, getCommitsSinceDate, getProjectBranches } from './services/GitlabServices';
 import ListOfCommits, { ListOfCommitsSinceDate, ListOfCommitsSinceUntilDates, ListOfCommitsUntilDate } from './components/ListOfCommits';
 import { CommitById } from './components/Commit';
+import ListOfBranches from './components/ListOfBranches';
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
           {/* <CommitById projectId={18625237} commitId = {'f482fef4bbb5d8ac99d20b6d80b3f1af50c8b335'}/> */}
           {/* <ListOfCommitsSinceDate projectId ={18625237} sinceDate = {'2020-07-07'}/> */}
           {/* <ListOfCommitsUntilDate projectId={18625237} untilDate={'2020-09-20'} /> */}
-          <ListOfCommitsSinceUntilDates projectId = {18625237} sinceDate={'2019-02-21'} untilDate = {'2019-02-22'}/>
+          {/* <ListOfCommitsSinceUntilDates projectId = {18625237} sinceDate={'2019-02-21'} untilDate = {'2019-02-22'}/> */}
+          <ListOfBranches projectId = {250833}/>
         </div>
       </header>
     </div>
