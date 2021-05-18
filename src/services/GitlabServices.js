@@ -192,3 +192,17 @@ export function getProjectBranches(projectId){
                 }
         })
 }
+
+// http://localhost:9091/gitlab/projects/250833/branches/1-10-stable
+export function getBranchByProjectId(projectId, branchName){
+    const url = baseUrl + 'projects/' + projectId + '/branches/' + branchName;
+    return fetch(url)
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+            const data = response;
+            const{name, merged, webUrl} = data
+            return {name, merged, webUrl}
+        })  
+
+}
