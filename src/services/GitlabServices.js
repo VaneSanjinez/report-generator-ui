@@ -175,3 +175,34 @@ export function getCommitsSinceUntilDate(projectId, since, until){
                 }
         })
 }
+//branches
+// http://localhost:9091/gitlab/projects/250833/branches
+export function getProjectBranches(projectId){
+    const url = baseUrl + 'projects/' + projectId + '/branches';
+    return fetch(url)
+        .then(res => res.json())
+        .then(response => {
+            const data = response;
+                 if(Array.isArray(data)){
+                    const branches = data.map(branch => {
+                        const {name, merged, webUrl} = branch
+                        return {name, merged, webUrl}
+                    })
+                 return branches
+                }
+        })
+}
+
+// http://localhost:9091/gitlab/projects/250833/branches/1-10-stable
+export function getBranchByProjectId(projectId, branchName){
+    const url = baseUrl + 'projects/' + projectId + '/branches/' + branchName;
+    return fetch(url)
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+            const data = response;
+            const{name, merged, webUrl} = data
+            return {name, merged, webUrl}
+        })  
+
+}
