@@ -206,3 +206,17 @@ export function getBranchByProjectId(projectId, branchName){
         })  
 
 }
+
+//http://localhost:9091/gitlab/users/sazzopardi@gitlab.com
+export function getUserByEmail({email}){
+    console.log( "EMAIL " +email)
+    const url = baseUrl + 'users/' + email
+    console.log("URL " + url)
+    return fetch (url)
+            .then(res => res.json())
+            .then(response => {
+                const data = response;
+                const {id, name, userName} = data
+                return {id, name, userName}
+            })
+}
