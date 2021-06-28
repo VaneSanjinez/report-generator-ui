@@ -1,41 +1,49 @@
 import React, {useState, useEffect} from 'react';
-import { getGitlabReportByProjectIdAndUserEmail } from '../services/ReportService'
+import { getGitlabReportByProjectIdAndUserEmail, getGitlabReportInfoByProjectIdAndUserEmail } from '../services/ReportService'
 import ReportInfo from './ReportInfo';
 
 
-export default function Report({currentDate, projectName, projectUrl, projectMember, reportDetails}){
+export default function Report({reportInfo, reportDetails}){
     return ( <div>
-        <h4>{currentDate}</h4>
-        <h5>{projectName}</h5>
-        <h5>{projectUrl}</h5>
-        <h5>{projectMember}</h5>
-        <h5>{reportDetails}</h5>
+        <span>{reportInfo}</span>
+        <span>{reportDetails}</span>
     </div>)
     // https://www.robinwieruch.de/react-list-component
 }
 
 export function GitlabReport({projectId, authorEmail}){
-    console.log('after entering gitlab method before define const')
-    const [report, setReport] = useState([]);
+    console.log('after entering gitlab method before define const');
+    const [report, setReport] = useState(null);
+    const [reportInfo, setReportInfo] = useState([]);
+    const [reportDetails, setReportDetails] = useState([]);
 
+    console.log("before call the method from service!")
     useEffect(function(){
         getGitlabReportByProjectIdAndUserEmail(projectId, authorEmail)
         .then(report => setReport(report))
     }, []);
+
+ 
     return <div>
-            <Report
-                currentDate = {report.currentDate}
-                projectName = {report.projectName}
-                projectUrl = {report.projectUrl}
-                reportDetails = {report.reportDetails.map(({authorName, commitDate, details, hours, percent}) => 
-                        <ReportInfo 
-                            authorName = {authorName}
-                            commitDate = {commitDate}
-                            details = {details}
-                            hours = {hours}
-                            percent = {percent} />
-                )}
-            />
+            {/* TODO */}
     </div>
+}
+
+//019
+export function GitlabReportInfo({projectId, authorEmail}){
+    const [projectInfo, setProjectInfo] = useState([]);
+
+    useEffect(function(){
+        getGitlabReportInfoByProjectIdAndUserEmail(projectId, authorEmail)
+        .then(projectInfo => setProjectInfo(projectInfo))
+    }, []);
+    return <div>
+            <ReportInfo 
+                projectName = {projectInfo.projectName}
+                projectUrl = {projectInfo.projectUrl}
+                currentDate = {projectInfo.currentDate}
+                projectMember = {projectInfo.projectMember}
+            />
+    </div> 
 }
 
