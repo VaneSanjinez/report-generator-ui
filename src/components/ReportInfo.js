@@ -1,11 +1,10 @@
 import React from 'react';
 
-export default function ReportInfo({authorName, commitDate, details, hours, percent}){
+export default function ReportInfo({projectName, projectUrl, currentDate, projectMember}){
     return ( <div>
-        <h4>{authorName}</h4>
-        <h5>{commitDate}</h5>
-        <span>{details}</span>
-        <h5>{hours}</h5>
-        <h5>{percent}</h5>
+        <h4>{projectName}</h4>
+        <h5>{projectUrl}</h5>
+        <span>{projectMember}</span>
+        <h5>{currentDate}</h5>
     </div>)
 }
