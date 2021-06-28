@@ -31,3 +31,22 @@ export function getGitlabReportInfoByProjectIdAndUserEmail(projectId, authorEmai
         return {projectName, projectUrl, currentDate, projectMember}
     })  
 }
+
+//http://localhost:9091/report/reportdetails/250833/sazzopardi@gitlab.com
+export function getGitlabReportDetailsByProjectIdAndUserEmail(projectId, authorEmail){
+    const url = 'http://localhost:9091/report/reportdetails/'+ projectId +'/'+ authorEmail;
+    return fetch(url)
+    .then(res => res.json())
+    .then(response => {
+        console.log(response.length);
+        const data = response
+         if(Array.isArray(data)){
+             const reportDetails = data.map(reportDetail => {
+                 const{commitDate, hours, details, percent} = reportDetail
+                 return {commitDate, hours, details, percent}
+             })
+             return reportDetails;
+         }
+    })
+
+}

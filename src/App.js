@@ -9,7 +9,7 @@ import ListOfCommits, { ListOfCommitsSinceDate, ListOfCommitsSinceUntilDates, Li
 import { CommitById } from './components/Commit';
 import ListOfBranches from './components/ListOfBranches';
 import { BranchById } from './components/Branch';
-import {GitlabReportInfo} from './components/Report';
+import {GitlabReportInfo, GitlabReportDetails} from './components/Report';
 import {UserByEmail} from './components/User';
 
 function App() {
@@ -45,6 +45,7 @@ function App() {
           {/* {getGitlabReportByProjectIdAndUserEmail(250833, 'sazzopardi@gitlab.com')} */}
           {/* <UserByEmail email={'sazzopardi@gitlab.com'} /> */}
           <GitlabReportInfo projectId ={250833} authorEmail = {'sazzopardi@gitlab.com'}/>
+          <GitlabReportDetails projectId ={250833} authorEmail = {'sazzopardi@gitlab.com'}/>
         </div>
       </header>
     </div>
