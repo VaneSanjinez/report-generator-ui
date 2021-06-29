@@ -4,9 +4,11 @@ import { getCommitById, getCommitsByProjectId } from '../services/GitlabServices
 export default function Commit({id, authorName, authorEmail, creationDate, message, webUrl}){
     return(<div>
         <span>
-            <div>Author: {authorName}</div>
-            <div>Email: {authorEmail}</div>
+            <div>Author Name: {authorName}</div>
+            <div>Author Email: {authorEmail}</div>
             <div>Message: {message}</div>
+            <h2>Creation Date: {creationDate}</h2>
+            <h2>Commit Url: {webUrl}</h2>
         </span>
     </div>)
 }
@@ -24,6 +26,8 @@ export function CommitById({projectId, commitId}){
             authorName = {commit.authorName}
             authorEmail = {commit.authorEmail}
             message = {commit.message}
+            creationDate = {commit.creationDate}
+            webUrl = {commit.webUrl}
         />
     </div>
 }

@@ -3,9 +3,9 @@ import { getBranchByProjectId } from '../services/GitlabServices';
 
 export default function Branch({name, merged, webUrl}){
     return (<div>
-        <h2>{name}</h2>
-        <h2>{merged}</h2>
-        <h2>{webUrl}</h2>
+        <h2>Branch name: {name}</h2>
+        <h2>Merged: {merged}</h2>
+        <h2>Branch Url:{webUrl}</h2>
     </div>)
 
 }
