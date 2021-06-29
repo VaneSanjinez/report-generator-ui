@@ -3,9 +3,8 @@ import { getProjectById } from '../services/GitlabServices'
 
 export default function Project({id, description, name, webUrl}){
     return ( <div>
-        <h4>{name}</h4>
-        <h5>{description}</h5>
-        <h5>{webUrl}</h5>
+        <h4>Project Name: {name}</h4>
+        <h5>Project Description: {description}</h5>
     </div>)
 }
 

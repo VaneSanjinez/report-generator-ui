@@ -9,14 +9,11 @@ export default function Report({reportInfo, reportDetails}){
         <span>{reportInfo}</span>
         <span>{reportDetails}</span>
     </div>)
-    // https://www.robinwieruch.de/react-list-component
 }
 
 export function GitlabReport({projectId, authorEmail}){
     console.log('after entering gitlab method before define const');
-    const [report, setReport] = useState(null);
-    const [reportInfo, setReportInfo] = useState([]);
-    const [reportDetails, setReportDetails] = useState([]);
+    const [report, setReport] = useState([]);
 
     console.log("before call the method from service!")
     useEffect(function(){
@@ -24,7 +21,6 @@ export function GitlabReport({projectId, authorEmail}){
         .then(report => setReport(report))
     }, []);
 
- 
     return <div>
             {/* TODO */}
     </div>
@@ -38,6 +34,7 @@ export function GitlabReportInfo({projectId, authorEmail}){
         getGitlabReportInfoByProjectIdAndUserEmail(projectId, authorEmail)
         .then(projectInfo => setProjectInfo(projectInfo))
     }, []);
+    
     return <div>
             <ReportInfo 
                 projectName = {projectInfo.projectName}

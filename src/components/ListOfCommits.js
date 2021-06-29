@@ -16,6 +16,8 @@ export default function ListOfCommits({projectId}){
                 authorName = {authorName}
                 authorEmail = {authorEmail}
                 message = {message}
+                creationDate = {creationDate}
+                webUrl = {webUrl}
             />
         )}
     </div>
@@ -34,6 +36,8 @@ export function ListOfCommitsSinceDate({projectId, sinceDate}){
                 authorName = {authorName}
                 authorEmail = {authorEmail}
                 message = {message}
+                creationDate = {creationDate}
+                webUrl = {webUrl}
             />
         )}
     </div>
@@ -54,6 +58,8 @@ export function ListOfCommitsUntilDate({projectId, untilDate}){
                 authorName = {authorName}
                 authorEmail = {authorEmail}
                 message = {message}
+                creationDate = {creationDate}
+                webUrl = {webUrl}
             />
         )}
     </div>
@@ -73,6 +79,8 @@ export function ListOfCommitsSinceUntilDates({projectId, sinceDate, untilDate}){
                 authorName = {authorName}
                 authorEmail = {authorEmail}
                 message = {message}
+                creationDate = {creationDate}
+                webUrl = {webUrl}
             />
         )}
     </div>
