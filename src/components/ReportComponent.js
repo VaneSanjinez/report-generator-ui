@@ -1,9 +1,7 @@
 import React, {useState} from "react";
 import {GitlabReportInfo, GitlabReportDetails} from './Report';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import ListOfMembers from "./ListOfMembers";
+import { getProjectById } from "../services/GitlabServices";
 
 
 class ReportComponent extends React.Component{
@@ -13,7 +11,8 @@ class ReportComponent extends React.Component{
       count: 0,
       projectId: null,
       value: '',
-      showDropdown: false
+      showDropdown: false,
+      showReport: false
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -29,49 +28,45 @@ class ReportComponent extends React.Component{
     });
   }
 
+  // _showGitlabReportInfo = (projectId, authorName) =>{
+  //   return (
+  //     GitlabReportDetails(projectId, authorName)
+  //   )
+  // }
+  _showReport = (bool) =>{
+    this.setState({
+      showReport: bool
+    })
+  }
+  sayHello(projectid, author) {
+    alert('Hello!' + author + 'this is your project' + projectid);
+  }
+
   render() {
-    this.state.projectId = 36528
-    // this.state.showDropdown=true
     return (
-           <div>
-             <button onClick={this._showDropdown.bind(null, true)}>Display Team members</button>
-            <div>
-            <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter project id"/>
+     <div>
+       <div>
+         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter project id"/>
           <div>
-          { this.state.showDropdown && (<ListOfMembers projectId={this.state.projectId}/>) }
+            <button onClick={this._showDropdown.bind(null, true)}>Display Team members</button>
+              {() => {if(this.state.value != null){
+                this.state.projectId = this.state.value
+              }}}
+              {this.state.showDropdown && (<ListOfMembers projectId={this.state.value}/>)}
           </div>
-        </label>
-            </div>
-          
-        {/* <ListOfMembers projectId={this.state.projectId}></ListOfMembers> */}
+          <div>
+          <button onClick={this._showReport.bind(null, true)}>Run Report</button>
+              {this.state.showReport && (<div>
+                                          <GitlabReportInfo projectId ={250833} authorEmail = {'Steve Azzopardi'}/>
+                                          <h1><b>Hello!</b></h1>
+                                          {/* <GitlabReportDetails projectId ={250833} authorEmail = {'Steve Azzopardi'}/> */}
+                                        </div>)}
+          </div>
+       </div>
     </div>
     )}
-  // render(){
-  //   this.state.projectId = 36528
-  //   // this.state.projectId = this.state.value
-  //   // this.state.projectId = 18625237
-  //   // if(this.state.value =! null || this.state.value < 30000){
-  //   //   this.state.projectId = 250833
-  //   // }else{
-  //   //   this.state.projectId = this.state.value
-  //   // }
-  //   if(this.state.showDropdown){
-  //     return <ListOfMembers projectId={this.state.projectId}></ListOfMembers>
-  //   }
-  //   return(
-  //     <div>
-  //         <label>
-  //         Name:
-  //         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter project id"/>
-  //       </label>
-  //       {/* <ListOfMembers projectId={this.state.projectId}></ListOfMembers> */}
-  //   </div>
-  //   )
-  //   // <ListOfMembers projectId={this.state.projectId}/>
-    
-  // }
 }
 
 export default ReportComponent;
+//https://stackoverflow.com/questions/65209396/react-button-onclick-event-call-other-component
+// https://blog.logrocket.com/a-guide-to-react-onclick-event-handlers-d411943b14dd/
