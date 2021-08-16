@@ -12,12 +12,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>
           <Home/>
           <Button>Hey Im a button!</Button>
           {routes}
           <ReportComponent/>
-        </div>
       </header>
     </div>
   );
