@@ -15,7 +15,7 @@ export default function ReportInfo({projectName, projectUrl, currentDate, projec
                         <th>Project Member</th>
                         <th>Date</th>
                     </tr>
-                    </thead>
+                </thead>
                     <tr>
                         <td>{projectName}</td>
                         <td><a href={projectUrl} target="_blank">Visit Project</a></td>

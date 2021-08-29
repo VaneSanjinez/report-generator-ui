@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {GitlabReportInfo, GitlabReportDetails} from './Report';
 import ListOfMembers from "./ListOfMembers";
 import { getProjectById } from "../services/GitlabServices";
+import ReportDetailsHeader from "./ReportDetailsHeader";
 
 
 class ReportComponent extends React.Component{
@@ -57,9 +58,9 @@ class ReportComponent extends React.Component{
           <div>
           <button onClick={this._showReport.bind(null, true)}>Run Report</button>
               {this.state.showReport && (<div>
-                                          <GitlabReportInfo projectId ={250833} authorEmail = {'Steve Azzopardi'}/>
-                                          <h1><b>Hello!</b></h1>
-                                          {/* <GitlabReportDetails projectId ={250833} authorEmail = {'Steve Azzopardi'}/> */}
+                                          <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
+                                          <ReportDetailsHeader/>
+                                          <GitlabReportDetails projectId ={6853087} authorEmail = {'Nick Busey'}/>
                                         </div>)}
           </div>
        </div>

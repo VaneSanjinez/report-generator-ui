@@ -56,9 +56,9 @@ export function GitlabReportDetails({projectId, authorEmail}){
         {reportDetails.map(({commitDate, hours, details, percent}) =>
             <ReportDetail 
                 commitDate = {commitDate}
-                hours = {hours}
+                // hours = {hours}
                 details = {details}
-                percent = {percent}
+                // percent = {percent}
             />
         )}
     </div>
