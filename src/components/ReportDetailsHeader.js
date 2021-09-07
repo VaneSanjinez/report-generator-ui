@@ -1,15 +1,16 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table';
 
 export default function ReportDetailsHeader(){
     return (
-        <table>
+        // <Table striped bordered hover>
             <tr>
                 <th>Commit Date</th>
                 {/* <th>Hours</th> */}
-                <th>Details - Message</th>
+                <th>Message</th>
                 {/* <th>Percent</th> */}
             </tr>
-        </table>
-        
+            // </Table>
+
     )
 }

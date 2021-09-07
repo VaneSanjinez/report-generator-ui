@@ -3,6 +3,7 @@ import {GitlabReportInfo, GitlabReportDetails} from './Report';
 import ListOfMembers from "./ListOfMembers";
 import { getProjectById } from "../services/GitlabServices";
 import ReportDetailsHeader from "./ReportDetailsHeader";
+import Table from 'react-bootstrap/Table';
 
 
 class ReportComponent extends React.Component{
@@ -57,11 +58,29 @@ class ReportComponent extends React.Component{
           </div>
           <div>
           <button onClick={this._showReport.bind(null, true)}>Run Report</button>
-              {this.state.showReport && (<div>
+          {/* TODO Here build the table*/}
+              {/* {this.state.showReport && (<div>
                                           <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
                                           <ReportDetailsHeader/>
                                           <GitlabReportDetails projectId ={6853087} authorEmail = {'Nick Busey'}/>
-                                        </div>)}
+                                        </div>)} */}
+
+                  {this.state.showReport && (
+                                              <Table striped bordered hover size="sm" responsive>
+                                                  <thead>
+                                                    <tr>
+                                                      <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
+                                                    </tr>
+                                                    <tr>
+                                                      <th>commit date / message</th>
+                                                    {/* <ReportDetailsHeader/> */}
+                                                    </tr>
+                                                    <tbody className="tbody-gilabreportdetails">
+                                                      <GitlabReportDetails projectId ={6853087} authorEmail = {'Nick Busey'}/>
+                                                    </tbody>
+                                                  </thead>
+                                              </Table>
+                  )}
           </div>
        </div>
     </div>

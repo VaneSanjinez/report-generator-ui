@@ -53,7 +53,7 @@ export function GitlabReportDetails({projectId, authorEmail}){
         .then(reportDetails => setReportDetails(reportDetails))
     }, []);
     return <div>
-        {reportDetails.map(({commitDate, hours, details, percent}) =>
+ {reportDetails.map(({commitDate, hours, details, percent}) =>
             <ReportDetail 
                 commitDate = {commitDate}
                 // hours = {hours}
@@ -62,4 +62,6 @@ export function GitlabReportDetails({projectId, authorEmail}){
             />
         )}
     </div>
+       
+    
 }
