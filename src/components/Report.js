@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { getGitlabReportByProjectIdAndUserEmail, getGitlabReportInfoByProjectIdAndUserEmail, getGitlabReportDetailsByProjectIdAndUserEmail } from '../services/ReportService'
 import ReportInfo from './ReportInfo';
 import ReportDetail from './ReportDetail';
+import ReportDetailsHeader from './ReportDetailsHeader';
 
 
 export default function Report({reportInfo, reportDetails}){
@@ -53,14 +54,15 @@ export function GitlabReportDetails({projectId, authorEmail}){
         .then(reportDetails => setReportDetails(reportDetails))
     }, []);
     return <div>
- {reportDetails.map(({commitDate, hours, details, percent}) =>
-            <ReportDetail 
-                commitDate = {commitDate}
-                // hours = {hours}
-                details = {details}
-                // percent = {percent}
-            />
-        )}
+        <ReportDetailsHeader/>
+            {reportDetails.map(({commitDate, hours, details, percent}) =>
+                <ReportDetail 
+                    commitDate = {commitDate}
+                    // hours = {hours}
+                    details = {details}
+                    // percent = {percent}
+                />
+            )}
     </div>
        
     

@@ -4,12 +4,14 @@ import Table from 'react-bootstrap/Table';
 export default function ReportDetailsHeader(){
     return (
         // <Table striped bordered hover>
-            <tr>
-                <th>Commit Date</th>
-                {/* <th>Hours</th> */}
-                <th>Message</th>
-                {/* <th>Percent</th> */}
-            </tr>
+            <thead>
+                <tr>
+                    <td>Commit Date</td>
+                    {/* <th>Hours</th> */}
+                    <td>Message</td>
+                    {/* <th>Percent</th> */}
+                </tr>
+            </thead>
             // </Table>
 
     )

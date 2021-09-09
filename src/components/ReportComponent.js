@@ -66,20 +66,25 @@ class ReportComponent extends React.Component{
                                         </div>)} */}
 
                   {this.state.showReport && (
-                                              <Table striped bordered hover size="sm" responsive>
-                                                  <thead>
-                                                    <tr>
-                                                      <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
-                                                    </tr>
-                                                    <tr>
-                                                      <th>commit date / message</th>
-                                                    {/* <ReportDetailsHeader/> */}
-                                                    </tr>
-                                                    <tbody className="tbody-gilabreportdetails">
-                                                      <GitlabReportDetails projectId ={6853087} authorEmail = {'Nick Busey'}/>
-                                                    </tbody>
-                                                  </thead>
-                                              </Table>
+                  <div>
+                    <div>
+                          <Table striped bordered hover size="sm" responsive>
+                              <thead>
+                                <tr>
+                                  <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
+                                </tr>
+                              </thead>
+                          </Table>
+                          </div>
+                          <h2>Report Details</h2>
+                          <div>
+                          <Table>
+                            <tbody className="tbody-gilabreportdetails">
+                                  <GitlabReportDetails projectId ={6853087} authorEmail = {'Nick Busey'}/>
+                                </tbody>
+                          </Table>
+                          </div>
+                      </div>
                   )}
           </div>
        </div>
