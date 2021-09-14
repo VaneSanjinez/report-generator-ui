@@ -58,7 +58,6 @@ class ReportComponent extends React.Component{
           </div>
           <div>
           <button onClick={this._showReport.bind(null, true)}>Run Report</button>
-          {/* TODO Here build the table*/}
               {/* {this.state.showReport && (<div>
                                           <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
                                           <ReportDetailsHeader/>
@@ -68,7 +67,7 @@ class ReportComponent extends React.Component{
                   {this.state.showReport && (
                   <div>
                     <div>
-                          <Table striped bordered hover size="sm" responsive>
+                          <Table striped bordered hover size="sm">
                               <thead>
                                 <tr>
                                   <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>

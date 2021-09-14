@@ -1,0 +1,15 @@
+.table-row{
+    color:black;
+    /* font-size: 23px; */
+    border-width: 0.1rem;
+}
+.table-cell{
+    color:black;
+    /* font-size: 23px; */
+    border-width: 0.1rem;
+    text-align: left;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+
+    
+}
