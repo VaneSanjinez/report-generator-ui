@@ -36,14 +36,14 @@ export function GitlabReportInfo({projectId, authorEmail}){
         .then(projectInfo => setProjectInfo(projectInfo))
     }, []);
     
-    return <div>
+    return (
             <ReportInfo 
                 projectName = {projectInfo.projectName}
                 projectUrl = {projectInfo.projectUrl}
                 currentDate = {projectInfo.currentDate}
                 projectMember = {projectInfo.projectMember}
             />
-    </div> 
+    )
 }
 
 export function GitlabReportDetails({projectId, authorEmail}){

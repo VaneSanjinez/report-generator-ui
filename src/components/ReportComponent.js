@@ -58,6 +58,7 @@ class ReportComponent extends React.Component{
           </div>
           <div>
           <button onClick={this._showReport.bind(null, true)}>Run Report</button>
+          <br/><br/>
               {/* {this.state.showReport && (<div>
                                           <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
                                           <ReportDetailsHeader/>
@@ -66,16 +67,11 @@ class ReportComponent extends React.Component{
 
                   {this.state.showReport && (
                   <div>
-                    <div>
+                    <div className="classTable">
                           <Table striped bordered hover size="sm">
-                              <thead>
-                                <tr>
                                   <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
-                                </tr>
-                              </thead>
                           </Table>
                           </div>
-                          <h2>Report Details</h2>
                           <div>
                           <Table>
                             <tbody className="tbody-gilabreportdetails">
