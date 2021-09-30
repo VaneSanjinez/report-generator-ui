@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {GitlabReportInfo, GitlabReportDetails} from './Report';
 import ListOfMembers from "./ListOfMembers";
-import { getProjectById } from "../services/GitlabServices";
+import { postGitlabExportReportByProjectIdAndProjectMember } from "../services/ReportService";
 import ReportDetailsHeader from "./ReportDetailsHeader";
 import Table from 'react-bootstrap/Table';
 
@@ -14,7 +14,9 @@ class ReportComponent extends React.Component{
       projectId: null,
       value: '',
       showDropdown: false,
-      showReport: false
+      showReport: false, 
+      exportReport: false,
+      exportComplete: false
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -28,6 +30,13 @@ class ReportComponent extends React.Component{
     this.setState({
       showDropdown: bool
     });
+  }
+
+  _exportReport = (bool) =>{
+    // e.preventDefault();
+    this.setState({
+      exportReport: bool
+    })
   }
 
   // _showGitlabReportInfo = (projectId, authorName) =>{
@@ -72,6 +81,8 @@ class ReportComponent extends React.Component{
                                   <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
                           </Table>
                           </div>
+                            <button onClick={this._exportReport.bind(null, true)}>Export to TXT</button>
+                            {this.state.exportReport && postGitlabExportReportByProjectIdAndProjectMember(6853087, 'Nick Busey')}
                           <div>
                           <Table>
                             <tbody className="tbody-gilabreportdetails">
