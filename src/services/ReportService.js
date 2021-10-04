@@ -50,3 +50,17 @@ export function getGitlabReportDetailsByProjectIdAndUserEmail(projectId, authorE
     })
 
 }
+export function postGitlabExportReportByProjectIdAndProjectMember(projectId, projectMember){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: 'React POST Request Example' })
+    }
+    const url = 'http://localhost:9091/report/export/'+ projectId +'/'+ projectMember;
+    // fetch(url, requestOptions)
+    fetch(url)
+        .then(response => response.json())
+        // .then(()=>{console.log("Finished fetch call")})
+        //https://jasonwatmore.com/post/2020/02/01/react-fetch-http-post-request-examples
+
+}
