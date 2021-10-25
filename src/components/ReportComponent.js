@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import {GitlabReportInfo, GitlabReportDetails} from './Report';
 import ListOfMembers from "./ListOfMembers";
+import ListOfMembersV2 from "./ListOfMembersV2";
 import { postGitlabExportReportByProjectIdAndProjectMember } from "../services/ReportService";
 import ReportDetailsHeader from "./ReportDetailsHeader";
 import Table from 'react-bootstrap/Table';
+import { ProjectSelection } from "./ProjectSelection";
 
 
 class ReportComponent extends React.Component{
@@ -12,11 +14,13 @@ class ReportComponent extends React.Component{
     this.state = {
       count: 0,
       projectId: null,
-      value: '',
+      value: null,
       showDropdown: false,
       showReport: false, 
       exportReport: false,
-      exportComplete: false
+      exportComplete: false,
+      error: '',
+      selectedTeamMember:''
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -52,18 +56,23 @@ class ReportComponent extends React.Component{
   sayHello(projectid, author) {
     alert('Hello!' + author + 'this is your project' + projectid);
   }
-
+  
   render() {
     return (
      <div>
+       <ProjectSelection/>
        <div>
-         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter project id"/>
+         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter project id" required/>
+         {() => {if(this.state.value != null && 
+                         this.state.value != '' && this.state.value != "" && 
+                         this.state.value != undefined && 
+                         this.state.value.length != 1){
+                              this.state.projectId = this.state.value
+                        }
+              }}
           <div>
-            <button onClick={this._showDropdown.bind(null, true)}>Display Team members</button>
-              {() => {if(this.state.value != null){
-                this.state.projectId = this.state.value
-              }}}
-              {this.state.showDropdown && (<ListOfMembers projectId={this.state.value}/>)}
+            <button onClick={this._showDropdown.bind(null, true)}>Display Team members</button>   
+              {this.state.showDropdown && (<ListOfMembersV2 projectId={this.state.value}/>)}
           </div>
           <div>
           <button onClick={this._showReport.bind(null, true)}>Run Report</button>

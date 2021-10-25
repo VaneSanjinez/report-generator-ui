@@ -6,6 +6,7 @@ import ReportComponent from './components/ReportComponent';
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListOfMembers from './components/ListOfMembers';
+import ReportGenerator from './components/ReportGeneator';
 
 function App() {
   const routes = createRoutes();
@@ -15,7 +16,8 @@ function App() {
           <Home/>
           <Button>Hey Im a button!</Button>
           {routes}
-          <ReportComponent/>
+          {/* <ReportComponent/> */}
+          <ReportGenerator/>
       </header>
     </div>
   );
