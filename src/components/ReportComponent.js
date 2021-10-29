@@ -20,14 +20,19 @@ class ReportComponent extends React.Component{
       exportReport: false,
       exportComplete: false,
       error: '',
-      selectedTeamMember:''
+      selectedTeamMember:'',
+      memberSelected:''
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
-    console.log(this.state.value)
+    console.log(this.state.value);
+    this.setState({ memberSelected : event.target.value });
+        this.setState({ memberSelected : event.target.value }, () => {
+            console.log(`state: ${this.state.memberSelected}, value: ${event.target.value}`)}
+        );
   }
   
   _showDropdown = (bool) =>{
@@ -72,7 +77,7 @@ class ReportComponent extends React.Component{
               }}
           <div>
             <button onClick={this._showDropdown.bind(null, true)}>Display Team members</button>   
-              {this.state.showDropdown && (<ListOfMembersV2 projectId={this.state.value}/>)}
+              {this.state.showDropdown && (<ListOfMembers projectId={this.state.value}/>)}
           </div>
           <div>
           <button onClick={this._showReport.bind(null, true)}>Run Report</button>
@@ -87,7 +92,7 @@ class ReportComponent extends React.Component{
                   <div>
                     <div className="classTable">
                           <Table striped bordered hover size="sm">
-                                  <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
+                                  <GitlabReportInfo projectId ={this.state.value} authorEmail = {'Nick Busey'}/>
                           </Table>
                           </div>
                             <button onClick={this._exportReport.bind(null, true)}>Export to TXT</button>
@@ -95,7 +100,7 @@ class ReportComponent extends React.Component{
                           <div>
                           <Table>
                             <tbody className="tbody-gilabreportdetails">
-                                  <GitlabReportDetails projectId ={6853087} authorEmail = {'Nick Busey'}/>
+                                  <GitlabReportDetails projectId ={this.state.value} authorEmail = {'Nick Busey'}/>
                                 </tbody>
                           </Table>
                           </div>
