@@ -73,7 +73,7 @@ class ReportComponentV2 extends React.Component{
         </select>)
     }
 }
-fetch(projectId){
+  fetch(projectId){
     
     var context = this;
 
@@ -132,6 +132,10 @@ fetch(projectId){
     alert('Hello!' + author + 'this is your project' + projectid);
   }
   
+  refreshPage = () => {
+    window.location.reload();
+  }
+
   render() {
     return (
      <div>
@@ -188,7 +192,10 @@ fetch(projectId){
                     </div>
                     )}
         </div>
-        <span>{this.state.showReport}</span>
+        <div>
+      <h1>{Math.random()}</h1>
+      <button onClick={this.refreshPage}>Refresh</button>
+    </div>
        </div>
     </div>
     )}
@@ -197,3 +204,4 @@ fetch(projectId){
 export default ReportComponentV2;
 //https://stackoverflow.com/questions/65209396/react-button-onclick-event-call-other-component
 // https://blog.logrocket.com/a-guide-to-react-onclick-event-handlers-d411943b14dd/
+//  refresh https://reactgo.com/react-refresh-page/
