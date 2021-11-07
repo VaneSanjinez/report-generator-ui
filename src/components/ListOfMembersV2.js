@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import { getProjectMembers } from '../services/GitlabServices';
-import Select from 'react-select';
 
 
 export default class ListOfMembersV2 extends React.Component{

@@ -1,12 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import {GitlabReportInfo, GitlabReportDetails} from './Report';
-import ListOfMembers from "./ListOfMembers";
-import ListOfMembersV2 from "./ListOfMembersV2";
 import { postGitlabExportReportByProjectIdAndProjectMember } from "../services/ReportService";
-import ReportDetailsHeader from "./ReportDetailsHeader";
 import Table from 'react-bootstrap/Table';
-import { ProjectSelection } from "./ProjectSelection";
-import { getProjectBranches, getProjectMembers } from '../services/GitlabServices';
+import {getProjectMembers } from '../services/GitlabServices';
 import $ from 'jquery';
 
 
@@ -45,7 +41,6 @@ class ReportComponentV2 extends React.Component{
   handleChange1(event) { //https://blog.greenroots.info/how-to-create-react-form-with-a-single-change-event-handler
     this.setState({projectId: event.target.value});
     console.log(this.state.value);
-    // this.setState({ memberSelected : event.target.value });
         this.setState({ memberSelected : event.target.value }, () => {
             console.log(`state: ${this.state.memberSelected}, value: ${event.target.value}`)}
         );
@@ -61,7 +56,6 @@ class ReportComponentV2 extends React.Component{
   }
 
   _retrieveTeamMembers() {
-    // componentDidUpdate(){
     console.log('before getproject')
     getProjectMembers(this.state.projectId)
     .then(teamMembers => this.setState({members : teamMembers}));
@@ -74,9 +68,7 @@ class ReportComponentV2 extends React.Component{
     }
 }
   fetch(projectId){
-    
     var context = this;
-
     $.ajax({
         url: 'http://localhost:9091/gitlab/projects/' + projectId + '/members',
         method: 'GET',
@@ -87,15 +79,8 @@ class ReportComponentV2 extends React.Component{
           });
         }
       });
-      
-    // if(this.state.members != undefined) {
-    //     return ( <select value={this.state.memberSelected} onChange={this.handleChange}>
-    //         {this.state.members.map((member) => (
-    //             <option value = {member.name}>{member.name}</option>
-    //         ))}
-    //     </select>)
-    // }
     }
+
     displayMembers(){
              return ( <select name="memberSelected"  value={this.state.memberSelected} onChange={this.handleChange}>
             {this.state.members.map((member) => (
@@ -118,16 +103,12 @@ class ReportComponentV2 extends React.Component{
     })
   }
 
-  // _showGitlabReportInfo = (projectId, authorName) =>{
-  //   return (
-  //     GitlabReportDetails(projectId, authorName)
-  //   )
-  // }
   _showReport = (bool) =>{
     this.setState({
       showReport: bool
     })
   }
+
   sayHello(projectid, author) {
     alert('Hello!' + author + 'this is your project' + projectid);
   }
@@ -141,7 +122,6 @@ class ReportComponentV2 extends React.Component{
      <div>
          <span>6853087</span>
        <div>
-         {/* <input type="text" value={this.state.projectId} onChange={this.handleChange} placeholder="Enter project id" required/> */}
          <input type="text" 
             name="projectId" 
             value={ this.state.projectId } 
@@ -154,25 +134,13 @@ class ReportComponentV2 extends React.Component{
                         }
               }}
           <div>
-            {/* <button onClick={this._showDropdown.bind(null, true)}>Display Team members</button>   */}
             <button onClick={this.fetch.bind(this, this.state.projectId)}>Display Team members</button>
             {this.displayMembers()} 
             {/* https://www.pluralsight.com/guides/dynamically-change-state-bound-content-with-react.js-on-successful-jquery-request  */}
-
-              {/* {this.state.showDropdown && (<ListOfMembers projectId={this.state.value}/>)} */}
-              {/* {this._retrieveTeamMembers(this.state.value)} */}
-                   
-
           </div>
           <div>
             <button onClick={this._showReport.bind(null, true)}>Run Report</button>
             <br/><br/>
-                {/* {this.state.showReport && (<div>
-                                            <GitlabReportInfo projectId ={6853087} authorEmail = {'Nick Busey'}/>
-                                            <ReportDetailsHeader/>
-                                            <GitlabReportDetails projectId ={6853087} authorEmail = {'Nick Busey'}/>
-                                          </div>)} */}
-
                     {this.state.showReport && (
                     <div>
                       <div className="classTable">
@@ -193,7 +161,6 @@ class ReportComponentV2 extends React.Component{
                     )}
         </div>
         <div>
-      <h1>{Math.random()}</h1>
       <button onClick={this.refreshPage}>Refresh</button>
     </div>
        </div>
