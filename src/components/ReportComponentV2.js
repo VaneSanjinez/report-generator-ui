@@ -82,10 +82,11 @@ class ReportComponentV2 extends React.Component{
     }
 
     displayMembers(){
-             return ( <select name="memberSelected"  value={this.state.memberSelected} onChange={this.handleChange}>
-            {this.state.members.map((member) => (
-                <option value = {member.name}>{member.name}</option>
-            ))}
+      return ( 
+        <select id="memberList" name="memberSelected"  value={this.state.memberSelected} onChange={this.handleChange}>
+          {this.state.members.map((member) => (
+              <option value = {member.name}>{member.name}</option>
+          ))}
         </select>)
     }
 
@@ -125,6 +126,7 @@ class ReportComponentV2 extends React.Component{
          <input type="text" 
             name="projectId" 
             value={ this.state.projectId } 
+            id="inputProjectId"
            onChange={ this.handleChange } />
          {() => {if(this.state.value != null && 
                          this.state.value != '' && this.state.value != "" && 
@@ -134,14 +136,19 @@ class ReportComponentV2 extends React.Component{
                         }
               }}
           <div>
-            <button onClick={this.fetch.bind(this, this.state.projectId)}>Display Team members</button>
+            <button id="displayMembers" onClick={this.fetch.bind(this, this.state.projectId)}>Display Team members</button>
             {this.displayMembers()} 
             {/* https://www.pluralsight.com/guides/dynamically-change-state-bound-content-with-react.js-on-successful-jquery-request  */}
           </div>
           <div>
-            <button onClick={this._showReport.bind(null, true)}>Run Report</button>
+            <button id="runReport" onClick={this._showReport.bind(null, true)}>Run Report</button>
             <br/><br/>
-                    {this.state.showReport && (
+                    {this.state.showReport &&
+                      $("#inputProjectId").hide() &&
+                      $("#displayMembers").hide() &&
+                      $("#memberList").hide() &&
+                      $("#runReport").attr("disabled",true) &&
+                     (
                     <div>
                       <div className="classTable">
                             <Table striped bordered hover size="sm">
