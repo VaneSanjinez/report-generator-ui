@@ -53,6 +53,11 @@ export function GitlabReportDetails({projectId, authorEmail}){
         getGitlabReportDetailsByProjectIdAndUserEmail(projectId, authorEmail)
         .then(reportDetails => setReportDetails(reportDetails))
     }, []);
+
+    const repDet = reportDetails;
+    if(reportDetails.length === 0){
+        return <span>There are no commits reported by this user</span>
+    }
     return <div>
         <ReportDetailsHeader/>
             {reportDetails.map(({commitDate, hours, details, percent}) =>
@@ -64,6 +69,5 @@ export function GitlabReportDetails({projectId, authorEmail}){
                 />
             )}
     </div>
-       
-    
+
 }
