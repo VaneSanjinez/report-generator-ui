@@ -4,6 +4,7 @@ import { postGitlabExportReportByProjectIdAndProjectMember } from "../services/R
 import Table from 'react-bootstrap/Table';
 import {getProjectMembers } from '../services/GitlabServices';
 import $ from 'jquery';
+import ExportReport from './ExportReport'
 
 
 class ReportComponentV2 extends React.Component{
@@ -21,7 +22,8 @@ class ReportComponentV2 extends React.Component{
       selectedTeamMember:'',
       memberSelected:'',
       members:[],
-      memberSelected: ''
+      memberSelected: '',
+      loadingReport: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -89,6 +91,11 @@ class ReportComponentV2 extends React.Component{
           ))}
         </select>)
     }
+    _exportReportComponent(project, member){
+      return (
+        <ExportReport projectId = {project} authorEmail = {member} />
+      )
+    }
 
 
   _showDropdown = (bool) =>{
@@ -100,7 +107,8 @@ class ReportComponentV2 extends React.Component{
   _exportReport = (bool) =>{
     // e.preventDefault();
     this.setState({
-      exportReport: bool
+      exportReport: bool,
+      loadingReport: true
     })
   }
 
@@ -117,6 +125,8 @@ class ReportComponentV2 extends React.Component{
   refreshPage = () => {
     window.location.reload();
   }
+
+
 
   render() {
     return (
@@ -155,8 +165,11 @@ class ReportComponentV2 extends React.Component{
                                     <GitlabReportInfo projectId ={this.state.projectId} authorEmail = {this.state.memberSelected}/>
                             </Table>
                       </div>
-                              <button onClick={this._exportReport.bind(null, true)}>Export to TXT</button>
-                              {this.state.exportReport && postGitlabExportReportByProjectIdAndProjectMember(this.state.projectId, this.state.memberSelected)}
+                              <button id="exportReport" onClick={this._exportReport.bind(null, true)}>Export to TXT</button>
+                              {this.state.exportReport &&  $("#exportReport").attr("disabled",true) && 
+                              // this._exportReportComponent.bind(this.state.projectId, this.state.memberSelected)
+                                 postGitlabExportReportByProjectIdAndProjectMember(this.state.projectId, this.state.memberSelected)
+                                }
                       <div>
                             <Table>
                               <tbody className="tbody-gilabreportdetails">
