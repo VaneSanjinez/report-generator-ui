@@ -152,6 +152,7 @@ class ReportComponentV2 extends React.Component{
           </div>
           <div>
             <button id="runReport" onClick={this._showReport.bind(null, true)}>Run Report</button>
+            <button onClick={this.refreshPage}>Refresh</button>
             <br/><br/>
                     {this.state.showReport &&
                       $("#inputProjectId").hide() &&
@@ -181,7 +182,7 @@ class ReportComponentV2 extends React.Component{
                     )}
         </div>
         <div>
-      <button onClick={this.refreshPage}>Refresh</button>
+      
     </div>
        </div>
     </div>
