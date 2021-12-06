@@ -17,10 +17,10 @@ export default function ReportInfo({projectName, projectUrl, currentDate, projec
                     </tr>
                 
                     <tr className="table-cell" >
-                        <td className="table-cell">{projectName}</td>
-                        <td className="table-cell"><a href={projectUrl} target="_blank">Visit Project</a></td>
-                        <td className="table-cell">{projectMember}</td>
-                        <td className="table-cell">{currentDate}</td>
+                        <td className="cell-detail">{projectName}</td>
+                        <td className="cell-detail"><a href={projectUrl} target="_blank">Visit Project</a></td>
+                        <td className="cell-detail">{projectMember}</td>
+                        <td className="cell-detail">{currentDate}</td>
                     </tr>
                     </thead>
 

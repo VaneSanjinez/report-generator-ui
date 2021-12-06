@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table';
 import {getProjectMembers } from '../services/GitlabServices';
 import $ from 'jquery';
 import ExportReport from './ExportReport'
+import '../styles/ReportComponent.css'
 
 
 class ReportComponentV2 extends React.Component{
@@ -85,7 +86,12 @@ class ReportComponentV2 extends React.Component{
 
     displayMembers(){
       return ( 
-        <select id="memberList" name="memberSelected"  value={this.state.memberSelected} onChange={this.handleChange}>
+        <select id="memberList" 
+                name="memberSelected" 
+                value={this.state.memberSelected} 
+                onChange={this.handleChange}
+                className="teamMembersList">
+
           {this.state.members.map((member) => (
               <option value = {member.name}>{member.name}</option>
           ))}
@@ -137,22 +143,40 @@ class ReportComponentV2 extends React.Component{
             name="projectId" 
             value={ this.state.projectId } 
             id="inputProjectId"
-           onChange={ this.handleChange } />
+            onChange={ this.handleChange }
+            placeholder = "Project ID" 
+            className="inputProject"           />
          {() => {if(this.state.value != null && 
-                         this.state.value != '' && this.state.value != "" && 
-                         this.state.value != undefined && 
-                         this.state.value.length != 1){
+                    this.state.value != '' && this.state.value != "" && 
+                    this.state.value != undefined && 
+                    this.state.value.length != 1){
                               // this.state.projectId = this.state.value
-                        }
+          }
               }}
           <div>
-            <button id="displayMembers" onClick={this.fetch.bind(this, this.state.projectId)}>Display Team members</button>
+            <button id="displayMembers" 
+                    className="displayMembers" 
+                    onClick={this.fetch.bind(this, this.state.projectId)}>
+                    Display Team members
+            </button>
+            <br/>
             {this.displayMembers()} 
             {/* https://www.pluralsight.com/guides/dynamically-change-state-bound-content-with-react.js-on-successful-jquery-request  */}
           </div>
           <div>
-            <button id="runReport" onClick={this._showReport.bind(null, true)}>Run Report</button>
-            <button onClick={this.refreshPage}>Refresh</button>
+            <button 
+                id="runReport" 
+                onClick={this._showReport.bind(null, true)}
+                className = "runReportButton">
+            Run Report
+            </button>
+
+            <button 
+                onClick={this.refreshPage}
+                className="refreshPage">
+              Refresh
+            </button>
+
             <br/><br/>
                     {this.state.showReport &&
                       $("#inputProjectId").hide() &&
@@ -166,7 +190,11 @@ class ReportComponentV2 extends React.Component{
                                     <GitlabReportInfo projectId ={this.state.projectId} authorEmail = {this.state.memberSelected}/>
                             </Table>
                       </div>
-                              <button id="exportReport" onClick={this._exportReport.bind(null, true)}>Export to TXT</button>
+                              <button id="exportReport" 
+                                      onClick={this._exportReport.bind(null, true)}
+                                      className="exportReportButton">
+                                Export to TXT
+                              </button>
                               {this.state.exportReport &&  $("#exportReport").attr("disabled",true) && 
                               // this._exportReportComponent.bind(this.state.projectId, this.state.memberSelected)
                                  postGitlabExportReportByProjectIdAndProjectMember(this.state.projectId, this.state.memberSelected)

@@ -10,6 +10,26 @@
     text-align: left;
     padding-left: 15px !important;
     padding-right: 15px !important;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
 
     
+}
+
+.cell-detail{
+    color:white !important;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.row-details{
+    border-block-color: #ff7426;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    border-color: #ff7426 !important;
+}
+
+.row-details td{
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    border : 1px #ff7426 solid !important;
+    border-width: 0.1rem;
+    text-align: left;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
 }

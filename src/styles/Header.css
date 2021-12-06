@@ -1,0 +1,11 @@
+.title{
+    font-weight:500;
+    font-size: 3.5rem !important ;
+    color: white !important;
+}
+.title:hover{ 
+    color: rgb(255, 116, 38) !important;
+    font-size: 3.7rem !important;
+
+}
+
