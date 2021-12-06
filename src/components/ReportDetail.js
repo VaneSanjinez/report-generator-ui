@@ -11,9 +11,9 @@ export default function ReportDetail({commitDate, hours, details, percent}){
     let commitDateHour = commitDateComplete.slice(11, 16);
     let commitDate1 = commitDateDisplay + ' at ' + commitDateHour
     return ( 
-            <tr className="table-row">
-                <td className="table-cell">{commitDate1}</td>
-                <td className="table-cell">{details}</td>
+            <tr className="row-details">
+                <td className="cell-detail">{commitDate1}</td>
+                <td className="cell-detail">{details}</td>
          </tr>
     )
 }

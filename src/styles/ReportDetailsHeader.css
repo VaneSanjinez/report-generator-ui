@@ -1,5 +1,5 @@
 .thead-rep {
-    color:red;
+    color: #ff7426;
     font-size: 23px;
     border-width: 0.1rem;
 }
@@ -7,3 +7,22 @@
 /* Table{
     border-color: slateblue !important;
 } */
+
+.thead-rep{
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    size: 5rem;
+}
+
+.table-bordered>:not(caption)>*>* {
+    border-width: 0 1px;
+    color: #ff7426;
+}
+
+.cell-detail{
+    color:white !important
+}
+
+.table {
+    border-block-color: #ff7426;
+    border-color: #ff7426 !important;
+}
